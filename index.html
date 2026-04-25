@@ -1,0 +1,904 @@
+html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilita Brasil — Limpa Nome para Brasileiros nos EUA</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D2553;
+  --navy-mid: #163066;
+  --navy-light: #1e3d7b;
+  --green: #2aab47;
+  --green-dark: #1d8a36;
+  --yellow: #f5c518;
+  --yellow-dark: #d4a80e;
+  --white: #ffffff;
+  --off-white: #f4f6fb;
+  --gray: #8a96ad;
+  --text-light: #cdd5e4;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--white);
+  color: var(--navy);
+  overflow-x: hidden;
+}
+
+/* ── HEADER ── */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--navy);
+  padding: 14px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 24px rgba(13,37,83,0.4);
+}
+.logo-area { display: flex; align-items: center; gap: 12px; }
+.logo-icon {
+  width: 38px; height: 38px;
+  border: 2.5px solid var(--white);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: visible;
+}
+.check-yellow { position: absolute; bottom: 6px; left: 6px; width: 12px; height: 7px; border-left: 3px solid var(--yellow); border-bottom: 3px solid var(--yellow); transform: rotate(-45deg) translateY(-2px); }
+.check-green { position: absolute; bottom: 8px; left: 10px; width: 18px; height: 10px; border-right: 3px solid var(--green); border-bottom: 3px solid var(--green); transform: rotate(-45deg); }
+.logo-text { font-size: 17px; font-weight: 800; color: var(--white); letter-spacing: 0.02em; line-height: 1.1; }
+.logo-text span { display: block; }
+.header-cta {
+  background: var(--green);
+  color: var(--white);
+  border: none; border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+  display: inline-block;
+}
+.header-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 130px 5% 80px;
+  position: relative; overflow: hidden;
+  min-height: 100vh;
+  display: flex; align-items: center;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,171,71,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 720px; position: relative; z-index: 2; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,197,24,0.12);
+  border: 1px solid rgba(245,197,24,0.3);
+  border-radius: 99px;
+  padding: 7px 16px;
+  font-size: 12px; font-weight: 600; color: var(--yellow);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s ease both;
+}
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--green);
+  position: relative;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute; left: 0; bottom: -4px; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--yellow));
+  border-radius: 2px;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-weight: 300;
+  animation: fadeUp 0.7s ease 0.2s both;
+  max-width: 580px;
+}
+
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  animation: fadeUp 0.7s ease 0.3s both;
+  margin-bottom: 60px;
+}
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+  border: none; border-radius: 10px;
+  padding: 16px 32px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s;
+  box-shadow: 0 8px 32px rgba(42,171,71,0.35);
+}
+.btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(42,171,71,0.45); }
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3); border-radius: 10px;
+  padding: 16px 32px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
+
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  animation: fadeUp 0.7s ease 0.4s both;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 40px;
+}
+.hero-stat .num {
+  font-size: 30px; font-weight: 800; color: var(--white);
+  line-height: 1;
+}
+.hero-stat .num span { color: var(--yellow); }
+.hero-stat .label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── URGENCY BANNER ── */
+.urgency {
+  background: linear-gradient(135deg, #b71c1c, #c62828);
+  color: var(--white);
+  text-align: center;
+  padding: 18px 5%;
+  font-size: 14px; font-weight: 600;
+  line-height: 1.5;
+}
+.urgency strong { color: var(--yellow); }
+
+/* ── SECTION SHARED ── */
+section { padding: 90px 5%; }
+.section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800; color: var(--navy); line-height: 1.2;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; color: #4a5568; line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ── PROBLEMA ── */
+.problema { background: var(--off-white); }
+.problema-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px; margin-top: 50px;
+}
+.problema-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 28px 24px;
+  border-left: 4px solid #dc2626;
+  box-shadow: 0 2px 16px rgba(13,37,83,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.problema-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(13,37,83,0.1); }
+.problema-icon { font-size: 28px; margin-bottom: 12px; }
+.problema-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.problema-card p { font-size: 13px; color: #64748b; line-height: 1.6; }
+
+/* ── SOLUÇÃO ── */
+.solucao { background: var(--navy); position: relative; overflow: hidden; }
+.solucao::before {
+  content: '';
+  position: absolute; top: 0; right: 0; width: 60%; height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.solucao .section-title { color: var(--white); }
+.solucao .section-label { color: var(--yellow); }
+.solucao .section-sub { color: var(--text-light); }
+.solucao-steps {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px; margin-top: 50px;
+  position: relative; z-index: 2;
+}
+.step {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 32px 24px;
+  transition: background 0.2s;
+}
+.step:hover { background: rgba(255,255,255,0.08); }
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: var(--white);
+  margin-bottom: 20px;
+}
+.step h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+/* ── BENEFÍCIOS ── */
+.beneficios { background: var(--white); }
+.beneficios-list {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; margin-top: 50px;
+}
+.beneficio {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 24px;
+  background: var(--off-white);
+  border-radius: 14px;
+  transition: transform 0.2s;
+}
+.beneficio:hover { transform: translateY(-3px); }
+.beneficio-check {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--green), #1d7a33);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.beneficio-check svg { width: 18px; height: 18px; stroke: white; stroke-width: 2.5; fill: none; }
+.beneficio h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.beneficio p { font-size: 13px; color: #4a5568; line-height: 1.5; }
+
+/* ── PROVA SOCIAL ── */
+.prova { background: var(--off-white); }
+.depoimentos {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; margin-top: 50px;
+}
+.depo {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 20px rgba(13,37,83,0.07);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.depo:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(13,37,83,0.13); }
+.depo-stars { color: var(--yellow); font-size: 16px; margin-bottom: 14px; letter-spacing: 2px; }
+.depo p { font-family: 'Lora', serif; font-style: italic; font-size: 14px; color: #374151; line-height: 1.7; margin-bottom: 20px; }
+.depo-author { display: flex; align-items: center; gap: 12px; }
+.depo-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; color: var(--white);
+}
+.depo-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+.depo-local { font-size: 12px; color: var(--gray); }
+.depo-badge {
+  position: absolute; top: -10px; right: 20px;
+  background: var(--green);
+  color: var(--white); font-size: 10px; font-weight: 700;
+  padding: 4px 12px; border-radius: 99px;
+  letter-spacing: 0.05em;
+}
+.logos-row {
+  margin-top: 60px;
+  text-align: center;
+}
+.logos-row p { font-size: 13px; color: var(--gray); margin-bottom: 24px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.logos-icons {
+  display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 30px;
+}
+.bureau-logo {
+  padding: 12px 24px;
+  background: var(--white);
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px; font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.05em;
+}
+
+/* ── PREÇO ── */
+.preco { background: var(--navy); position: relative; overflow: hidden; }
+.preco::after {
+  content: '';
+  position: absolute; bottom: -60px; left: 50%; transform: translateX(-50%);
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,171,71,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.preco .section-title { color: var(--white); }
+.preco .section-label { color: var(--yellow); }
+.preco-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-top: 50px; position: relative; z-index: 2;
+  max-width: 900px;
+}
+.preco-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 36px 28px;
+  transition: transform 0.2s;
+}
+.preco-card:hover { transform: translateY(-4px); }
+.preco-card.destaque {
+  background: var(--white);
+  border: 2px solid var(--green);
+  position: relative;
+}
+.destaque-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--green), var(--yellow));
+  color: var(--navy); font-size: 11px; font-weight: 800;
+  padding: 5px 18px; border-radius: 99px;
+  white-space: nowrap; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.preco-card .plano { font-size: 12px; font-weight: 700; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+.preco-card.destaque .plano { color: var(--green); }
+.preco-card .valor { margin-bottom: 6px; }
+.preco-card .valor .dol { font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.6); vertical-align: super; }
+.preco-card.destaque .valor .dol { color: var(--navy-mid); }
+.preco-card .valor .num { font-size: 56px; font-weight: 800; color: var(--white); line-height: 1; }
+.preco-card.destaque .valor .num { color: var(--navy); }
+.preco-card .pagamento { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
+.preco-card.destaque .pagamento { color: var(--gray); }
+.preco-itens { list-style: none; margin-bottom: 32px; }
+.preco-itens li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: rgba(255,255,255,0.75);
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.preco-card.destaque .preco-itens li { color: #374151; border-bottom-color: #f1f5f9; }
+.preco-itens li:last-child { border-bottom: none; }
+.check-item {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(42,171,71,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.preco-card.destaque .check-item { background: rgba(42,171,71,0.15); }
+.check-item::after { content: '✓'; font-size: 10px; color: var(--green); font-weight: 800; }
+.btn-preco {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 10px;
+  padding: 14px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  display: block; text-align: center;
+  transition: all 0.2s;
+}
+.btn-preco:hover { background: rgba(255,255,255,0.18); }
+.btn-preco.verde {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+  box-shadow: 0 6px 24px rgba(42,171,71,0.4);
+}
+.btn-preco.verde:hover { background: var(--green-dark); }
+
+/* ── GARANTIA ── */
+.garantia {
+  background: var(--off-white);
+  text-align: center;
+}
+.garantia-box {
+  max-width: 560px; margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px 40px;
+  border: 2px solid var(--green);
+  box-shadow: 0 8px 40px rgba(42,171,71,0.15);
+}
+.garantia-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), #1d7a33);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 36px;
+}
+.garantia h2 { font-size: 26px; font-weight: 800; color: var(--navy); margin-bottom: 16px; }
+.garantia p { font-size: 15px; color: #4a5568; line-height: 1.7; }
+
+/* ── FAQ ── */
+.faq { background: var(--white); }
+.faq-list { max-width: 680px; margin-top: 50px; }
+.faq-item {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 24px 0;
+}
+.faq-q {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px;
+}
+.faq-q .arrow {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--off-white);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 16px;
+  transition: transform 0.3s, background 0.2s;
+}
+.faq-item.open .arrow { transform: rotate(180deg); background: var(--green); color: white; }
+.faq-a {
+  font-size: 14px; color: #4a5568; line-height: 1.7;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 200px; padding-top: 14px; }
+
+/* ── CTA FINAL ── */
+.cta-final {
+  background: var(--navy);
+  text-align: center;
+  padding: 100px 5%;
+  position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(42,171,71,0.13) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-final h2 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800; color: var(--white);
+  line-height: 1.2; margin-bottom: 20px;
+  position: relative; z-index: 2;
+}
+.cta-final h2 span { color: var(--yellow); }
+.cta-final p {
+  font-size: 17px; color: var(--text-light);
+  margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto;
+  line-height: 1.7; position: relative; z-index: 2;
+}
+.whatsapp-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366;
+  color: var(--white);
+  border: none; border-radius: 14px;
+  padding: 20px 40px;
+  font-family: 'Sora', sans-serif;
+  font-size: 17px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 8px 40px rgba(37,211,102,0.4);
+  position: relative; z-index: 2;
+}
+.whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 50px rgba(37,211,102,0.55); background: #1ebe5b; }
+.whatsapp-icon { width: 28px; height: 28px; }
+.cta-sub {
+  font-size: 13px !important;
+  color: rgba(255,255,255,0.4) !important;
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #091a3a;
+  padding: 40px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+.footer-logo .logo-text { font-size: 15px; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ── FLOATING WA ── */
+.floating-wa {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: floatIn 1s ease 2s both;
+}
+.floating-wa:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.65); }
+@keyframes floatIn { from{opacity:0;transform:scale(0)} to{opacity:1;transform:scale(1)} }
+.floating-wa svg { width: 32px; height: 32px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .hero { padding: 100px 5% 60px; min-height: auto; }
+  .hero-stats { gap: 24px; }
+  section { padding: 60px 5%; }
+  .preco-cards { grid-template-columns: 1fr; }
+  .garantia-box { padding: 36px 24px; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-area">
+    <div class="logo-icon">
+      <div class="check-yellow"></div>
+      <div class="check-green"></div>
+    </div>
+    <div class="logo-text">
+      <span>FACILITA</span>
+      <span>BRASIL</span>
+    </div>
+  </div>
+  <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+quero+saber+mais+sobre+o+servi%C3%A7o+de+limpa+nome" class="header-cta" target="_blank">
+    Falar no WhatsApp
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Serviço jurídico para brasileiros nos EUA
+    </div>
+    <h1>Volte ao Brasil<br>com o nome <em>limpo</em><br>e a cabeça erguida.</h1>
+    <p class="hero-sub">
+      Seja por escolha ou pela deportação, você merece chegar em casa com crédito, dignidade e liberdade. A gente resolve sua situação no SPC, Serasa, Boa Vista e Cartório — tudo online, sem precisar vir pro Brasil.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C+quero+limpar+meu+nome+antes+de+voltar" class="btn-primary" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.998l6.305-1.654A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.661-.497-5.193-1.367l-.372-.22-3.863 1.013 1.032-3.77-.242-.389A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Quero resolver agora
+      </a>
+      <a href="#como-funciona" class="btn-secondary">
+        Como funciona →
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">+<span>2</span>mil</div><div class="label">Brasileiros atendidos</div></div>
+      <div class="hero-stat"><div class="num"><span>30</span> dias</div><div class="label">Para protocolo jurídico</div></div>
+      <div class="hero-stat"><div class="num"><span>100</span>%</div><div class="label">Online, do exterior</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- URGÊNCIA -->
+<div class="urgency">
+  ⚠️ <strong>Atenção:</strong> Com as deportações em massa pelo ICE, cada dia sem resolver é mais juros e mais dívida te esperando no Brasil. <strong>Não espere ser pego de surpresa.</strong>
+</div>
+
+<!-- PROBLEMA -->
+<section class="problema">
+  <div class="section-label">O problema real</div>
+  <h2 class="section-title">Você sabe o que te espera<br>quando voltar?</h2>
+  <p class="section-sub">Dívidas não somem enquanto você está fora. Elas crescem. Silenciosas. E quando você menos espera, bloqueiam tudo.</p>
+  <div class="problema-grid">
+    <div class="problema-card">
+      <div class="problema-icon">🏦</div>
+      <h3>Sem conta bancária</h3>
+      <p>Com o nome sujo você não abre conta, não acessa crédito e não consegue nem receber seu salário em muitos empregos formais.</p>
+    </div>
+    <div class="problema-card">
+      <div class="problema-icon">🚗</div>
+      <h3>Sem financiamento</h3>
+      <p>Sonhou em chegar e comprar um carro? Com o CPF negativado, nenhum banco aprova. Você vai precisar pagar à vista ou depender de alguém.</p>
+    </div>
+    <div class="problema-card">
+      <div class="problema-icon">🏠</div>
+      <h3>Sem crédito para moradia</h3>
+      <p>Alugar um imóvel, financiar uma casa própria — tudo bloqueado por uma dívida que você nem se lembra de ter feito.</p>
+    </div>
+    <div class="problema-card">
+      <div class="problema-icon">😔</div>
+      <h3>A vergonha de voltar</h3>
+      <p>Você trabalhou anos fora. Sacrificou família, saudade, tempo. Voltar com o nome sujo é como se tudo isso não valesse nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section class="solucao" id="como-funciona">
+  <div class="section-label">A solução</div>
+  <h2 class="section-title">Como a Facilita Brasil<br>resolve isso por você</h2>
+  <p class="section-sub">Um processo jurídico real, conduzido por advogados registrados na OAB, 100% feito enquanto você ainda está fora.</p>
+  <div class="solucao-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Você manda seu CPF</h3>
+      <p>Via WhatsApp, com segurança total. A gente faz o mapeamento completo das suas dívidas no SPC, Serasa, Boa Vista e Cartório.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Análise jurídica</h3>
+      <p>Nossa equipe identifica o que pode ser suspenso, prescrito ou negociado. Você recebe um diagnóstico claro da situação.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Protocolo em 30 dias</h3>
+      <p>Damos entrada no processo jurídico. Você recebe o número de protocolo e pode acompanhar o andamento.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Você volta livre</h3>
+      <p>Com o CPF regularizado, você chega ao Brasil com crédito, dignidade e liberdade para recomeçar do jeito que merece.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+  <div class="section-label">O que está incluso</div>
+  <h2 class="section-title">Tudo que você precisa,<br>num só lugar</h2>
+  <div class="beneficios-list">
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Regularização no SPC e Serasa</h3><p>Os dois maiores birôs de crédito do Brasil, resolvidos de uma vez.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Boa Vista e protestos em Cartório</h3><p>Cobertura completa — nenhuma negativação passa despercebida.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Atendimento 100% pelo WhatsApp</h3><p>Você não precisa vir pro Brasil. Todo o processo é feito remotamente.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Advogados registrados na OAB</h3><p>Serviço jurídico sério, com profissionais responsáveis pelo seu caso.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Protocolo em até 30 dias</h3><p>Comprovante documentado do início do processo — transparência total.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Negociação com credores</h3><p>Quando possível, negociamos diretamente para reduzir o valor ou parcelar.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Comprovante de regularidade</h3><p>Documento que comprova que você está regularizando sua situação.</p></div>
+    </div>
+    <div class="beneficio">
+      <div class="beneficio-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div><h3>Sigilo total</h3><p>Sua situação é só sua. Discrição absoluta em todo o processo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROVA SOCIAL -->
+<section class="prova">
+  <div class="section-label">Quem já resolveu</div>
+  <h2 class="section-title">Eles não voltaram<br>com vergonha. Você também não vai.</h2>
+  <div class="depoimentos">
+    <div class="depo">
+      <div class="depo-badge">VERIFICADO</div>
+      <div class="depo-stars">★★★★★</div>
+      <p>"Fiquei 8 anos em Orlando sem resolver as dívidas que deixei no Brasil. Quando o ICE começou a apertar, entrei em contato com a Facilita Brasil. Em menos de 3 semanas tinha o protocolo na mão. Voltei pro Brasil e consegui financiar meu carro em 2 meses."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">RM</div>
+        <div><div class="depo-name">Ricardo M.</div><div class="depo-local">Orlando, Flórida</div></div>
+      </div>
+    </div>
+    <div class="depo">
+      <div class="depo-badge">VERIFICADO</div>
+      <div class="depo-stars">★★★★★</div>
+      <p>"Eu nem sabia o tamanho das minhas dívidas. Achei que era impossível resolver sem voltar. A equipe mapeou tudo, me explicou cada detalhe e conduziu tudo pelo WhatsApp. Meu CPF está limpo e eu posso planejar meu retorno sem medo."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">CS</div>
+        <div><div class="depo-name">Camila S.</div><div class="depo-local">Boston, Massachusetts</div></div>
+      </div>
+    </div>
+    <div class="depo">
+      <div class="depo-badge">VERIFICADO</div>
+      <div class="depo-stars">★★★★★</div>
+      <p>"Desconfiava no começo, achei que era golpe. Mas pesquisei, vi os documentos, fiz perguntas. Valeu cada centavo. Hoje tenho conta bancária, cartão de crédito, e já estou financiando meu apartamento. Recomendo pra todo brasileiro que está igual eu estava."</p>
+      <div class="depo-author">
+        <div class="depo-avatar">JP</div>
+        <div><div class="depo-name">João P.</div><div class="depo-local">Newark, Nova Jersey</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="logos-row">
+    <p>Regularizamos dívidas em</p>
+    <div class="logos-icons">
+      <div class="bureau-logo">SPC</div>
+      <div class="bureau-logo">SERASA</div>
+      <div class="bureau-logo">BOA VISTA</div>
+      <div class="bureau-logo">CARTÓRIO</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section class="preco" id="preco">
+  <div class="section-label">Investimento</div>
+  <h2 class="section-title">Escolha seu plano</h2>
+  <div class="preco-cards">
+    <div class="preco-card">
+      <div class="plano">Essencial</div>
+      <div class="valor"><span class="dol">$</span><span class="num">497</span></div>
+      <div class="pagamento">Pagamento único em dólar</div>
+      <ul class="preco-itens">
+        <li><div class="check-item"></div>Regularização SPC + Serasa</li>
+        <li><div class="check-item"></div>Protocolo jurídico em 30 dias</li>
+        <li><div class="check-item"></div>Atendimento pelo WhatsApp</li>
+        <li><div class="check-item"></div>Mapeamento completo das dívidas</li>
+      </ul>
+      <a href="https://wa.me/5500000000000?text=Quero+o+plano+Essencial+de+%24497" class="btn-preco" target="_blank">Quero esse plano</a>
+    </div>
+    <div class="preco-card destaque">
+      <div class="destaque-badge">MAIS ESCOLHIDO</div>
+      <div class="plano">Completo</div>
+      <div class="valor"><span class="dol" style="color:#163066">$</span><span class="num" style="color:#0D2553">697</span></div>
+      <div class="pagamento">Pagamento único em dólar</div>
+      <ul class="preco-itens">
+        <li><div class="check-item"></div>Tudo do Essencial</li>
+        <li><div class="check-item"></div>Boa Vista + Protestos em Cartório</li>
+        <li><div class="check-item"></div>Negociação com credores</li>
+        <li><div class="check-item"></div>Comprovante de regularidade</li>
+        <li><div class="check-item"></div>Suporte prioritário</li>
+      </ul>
+      <a href="https://wa.me/5500000000000?text=Quero+o+plano+Completo+de+%24697" class="btn-preco verde" target="_blank">Quero esse plano</a>
+    </div>
+    <div class="preco-card">
+      <div class="plano">Premium</div>
+      <div class="valor"><span class="dol">$</span><span class="num">997</span></div>
+      <div class="pagamento">Pagamento único em dólar</div>
+      <ul class="preco-itens">
+        <li><div class="check-item"></div>Tudo do Completo</li>
+        <li><div class="check-item"></div>Assessoria de planejamento financeiro</li>
+        <li><div class="check-item"></div>Guia de reintegração ao Brasil</li>
+        <li><div class="check-item"></div>1 consulta jurídica extra</li>
+        <li><div class="check-item"></div>Acompanhamento por 90 dias</li>
+      </ul>
+      <a href="https://wa.me/5500000000000?text=Quero+o+plano+Premium+de+%24997" class="btn-preco" target="_blank">Quero esse plano</a>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia">
+  <div class="garantia-box">
+    <div class="garantia-icon">🛡️</div>
+    <h2>Garantia de 30 dias</h2>
+    <p>Se em 30 dias úteis após o início do serviço não tivermos dado entrada no processo com protocolo comprovado, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. <strong>Você não corre nenhum risco.</strong></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-label">Dúvidas frequentes</div>
+  <h2 class="section-title">A gente sabe o que<br>você está pensando</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Preciso voltar ao Brasil para fazer o processo? <div class="arrow">▾</div></div>
+      <div class="faq-a">Não. Todo o processo é feito 100% online, via WhatsApp e e-mail. Você só precisa do seu CPF e dos seus dados. Não é necessário estar no Brasil em nenhuma etapa.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quanto tempo faz que minhas dívidas estão em aberto? Ainda dá pra resolver? <div class="arrow">▾</div></div>
+      <div class="faq-a">Dívidas com mais de 5 anos podem estar prescritas — o que significa que você tem o direito de pedir a retirada do nome dos birôs sem pagar. Nossa equipe faz o mapeamento e te explica cada caso.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como sei que é um serviço legítimo e não golpe? <div class="arrow">▾</div></div>
+      <div class="faq-a">Trabalhamos com advogados registrados na OAB. Você recebe o número de registro do profissional responsável pelo seu caso antes de pagar qualquer coisa. O processo é real, documentado e transparente.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Como funciona o pagamento em dólar? <div class="arrow">▾</div></div>
+      <div class="faq-a">Aceitamos Zelle, transferência bancária (ACH), PayPal e cartão de crédito internacional. Após a confirmação do pagamento, o processo é iniciado imediatamente.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">E se eu tiver muitas dívidas diferentes? <div class="arrow">▾</div></div>
+      <div class="faq-a">O plano Completo e Premium cobrem todas as dívidas mapeadas — independente da quantidade. Fazemos o levantamento completo do seu CPF antes de dar início ao processo.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Minha família no Brasil vai ficar sabendo? <div class="arrow">▾</div></div>
+      <div class="faq-a">Não. O processo é 100% confidencial. Todas as comunicações são feitas diretamente com você. Seu histórico financeiro é tratado com total discrição.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Você trabalhou demais<br>para voltar de <span>cabeça baixa.</span></h2>
+  <p>Fale agora com um consultor da Facilita Brasil. É gratuito, é rápido, e pode mudar tudo.</p>
+  <a href="https://wa.me/5500000000000?text=Ol%C3%A1%21+Quero+limpar+meu+nome+e+voltar+ao+Brasil+sem+d%C3%ADvida." class="whatsapp-btn" target="_blank">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.998l6.305-1.654A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.661-.497-5.193-1.367l-.372-.22-3.863 1.013 1.032-3.77-.242-.389A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Falar com um consultor agora
+  </a>
+  <p class="cta-sub">Atendimento em português · Resposta em até 2 horas · Sem compromisso</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-icon" style="border-color:rgba(255,255,255,0.4)">
+      <div class="check-yellow"></div>
+      <div class="check-green"></div>
+    </div>
+    <div class="logo-text"><span>FACILITA</span><span>BRASIL</span></div>
+  </div>
+  <p>© 2025 Facilita Brasil. Serviço jurídico especializado. OAB registrado.</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5521966280404?text=Ol%C3%A1%2C+vim+pelo+site+e+quero+saber+mais" class="floating-wa" target="_blank" title="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.998l6.305-1.654A11.937 11.937 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.661-.497-5.193-1.367l-.372-.22-3.863 1.013 1.032-3.77-.242-.389A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Smooth scroll para âncoras
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Intersection Observer para animações de entrada
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.problema-card, .step, .beneficio, .depo, .preco-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
